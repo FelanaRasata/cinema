@@ -7,9 +7,5 @@ public class ToolService
         return Enumerable.Range(1, 5).ToList();
     }
 
-    public List<string> GetCategories()
-    {
-        string[] array = { "Romance", "Thriller", "Science-Fiction" };
-        return new List<string>(array);
-    }
+   
 }

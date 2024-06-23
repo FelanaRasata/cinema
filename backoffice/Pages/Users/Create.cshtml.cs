@@ -37,7 +37,7 @@ namespace backoffice.Pages_Users
             }
 
             await _userService.SaveUser(User);
-
+            TempData["success"] = "User added successfully!";
             return RedirectToPage("./Index");
         }
     }

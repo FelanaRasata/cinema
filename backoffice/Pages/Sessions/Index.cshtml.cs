@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using backoffice.Databases;
 using backoffice.Models;
 using backoffice.Services;
+using X.PagedList;
 
 namespace backoffice.Pages_Sessions
 {
@@ -20,11 +21,10 @@ namespace backoffice.Pages_Sessions
             _sessionService = sessionService;
         }
 
-        public IList<Session> Session { get; set; } = default!;
-
-        public async Task OnGetAsync()
+        public IPagedList<Session> Sessions { get; set; }
+        public async Task OnGetAsync(int pageNumber = 1, int pageSize = 10)
         {
-            Session = await _sessionService.FindAllAsync();
+            Sessions = await _sessionService.GetSessionsPaginate(pageNumber, pageSize);
         }
     }
 }

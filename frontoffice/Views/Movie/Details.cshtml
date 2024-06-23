@@ -1,0 +1,89 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model frontoffice.Controllers.MovieDetailsViewModel
+
+
+@{
+ViewData["Title"] = "Details Movie";
+}
+
+
+
+
+@{
+ViewData["Title"] = "Details Movie";
+}
+
+<div>
+    <h4>Movie</h4>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movie.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movie.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Duration)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movie.Duration) (mn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movie.Category)
+        </dd>
+    </dl>
+    <hr/>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sessions[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sessions[0].Movie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sessions[0].SessionDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sessions[0].Room)
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Sessions)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie!.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SessionDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room)
+            </td>
+        </tr>
+        }
+        </tbody>
+    </table>
+
+
+</div>
+<div>
+    <a  asp-controller="Movie" asp-action="Index">Back to List</a>
+</div>

@@ -26,13 +26,15 @@ namespace backoffice.Pages_Users
         {
             if (id == null)
             {
-                return NotFound();
+                TempData["error"] = "id not found!";
+                return RedirectToPage("./Index");
             }
 
             var user = await _userService.FindByIdAsync(id);
             if (user == null)
             {
-                return NotFound();
+                TempData["error"] = $"User {id} not found!";
+                return RedirectToPage("./Index");
             }
             else
             {

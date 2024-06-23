@@ -1,0 +1,29 @@
+/* styles.css or any existing CSS file */
+.pagination {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin-right: 10px; /* Adjust the space as needed */
+}
+
+.pagination li a {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+
+.pagination li a:hover {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+.pagination li.active a {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}

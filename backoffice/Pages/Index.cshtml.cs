@@ -7,16 +7,21 @@ namespace backoffice.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
         private readonly UserService _userService;
+        private readonly SessionService _sessionService;
+        private readonly MovieService _movieService;
 
-        public IndexModel(ILogger<IndexModel> logger, UserService userService)
+        public IndexModel(UserService userService, MovieService movieService, SessionService sessionService)
         {
-            _logger = logger;
             _userService = userService;
+            _sessionService = sessionService;
+            _movieService = movieService;
         }
 
         public new User? User { get; set; } = default!;
+        public int countUsers = 0;
+        public int countMovies = 0;
+        public int countSessions = 0;
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -31,6 +36,10 @@ namespace backoffice.Pages
             {
                 return RedirectToPage("./Login");
             }
+
+            countMovies = await _movieService.countMovie();
+            countSessions = await _sessionService.countSession();
+            countUsers = await _userService.countUser();
 
             return Page();
         }

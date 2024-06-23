@@ -15,7 +15,7 @@ public class LoginModel : PageModel
     }
 
     [BindProperty] public string Email { get; set; } = "admin@gmail.com";
-    [BindProperty] public string Password { get; set; } = "123456789";
+    [BindProperty] public string Password { get; set; }
 
     public IActionResult OnGet()
     {
@@ -27,6 +27,7 @@ public class LoginModel : PageModel
         var user = await _userService.login(Email, Password);
         if (user == null)
         {
+            ModelState.AddModelError("login", "Your informations are incorrect .");
             return Page();
         }
 

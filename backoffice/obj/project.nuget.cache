@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "x8jT/AFNrlLE1QDBvL+xCQbEXV3lCuJtwpnV+ltgSeRF/JI3PmXGeMMz+KAdEoOZSGRYDrYvwfI2Atq2N3SIEQ==",
+  "dgSpecHash": "qRugHllIl+7qczNhPmzX3HoIfQPiflU9FD1SDVWumKI/75ldbEnA+JGDnuP26SPkHjgIPkVqM0Wnjbf3+0AZWw==",
   "success": true,
   "projectFilePath": "D:\\github\\cinema\\backoffice\\backoffice.csproj",
   "expectedPackageFiles": [
@@ -160,7 +160,9 @@
     "C:\\Users\\rasat\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
     "C:\\Users\\rasat\\.nuget\\packages\\system.threading.tasks.dataflow\\7.0.0\\system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
     "C:\\Users\\rasat\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\rasat\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
+    "C:\\Users\\rasat\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
+    "C:\\Users\\rasat\\.nuget\\packages\\x.pagedlist\\9.1.2\\x.pagedlist.9.1.2.nupkg.sha512",
+    "C:\\Users\\rasat\\.nuget\\packages\\x.pagedlist.mvc.core\\9.1.2\\x.pagedlist.mvc.core.9.1.2.nupkg.sha512"
   ],
   "logs": []
 }

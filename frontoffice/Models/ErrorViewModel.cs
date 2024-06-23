@@ -1,3 +1,5 @@
+using backoffice.Models;
+
 namespace frontoffice.Models
 {
     public class ErrorViewModel
@@ -6,4 +8,6 @@ namespace frontoffice.Models
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
+    
+   
 }

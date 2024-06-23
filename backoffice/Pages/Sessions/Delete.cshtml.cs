@@ -20,14 +20,16 @@ namespace backoffice.Pages_Sessions
         {
             if (id == null)
             {
-                return NotFound();
+                TempData["error"] = "id not found!";
+                return RedirectToPage("./Index");
             }
 
             var session = await _sessionService.FindByIdAsync(id);
 
             if (session == null)
             {
-                return NotFound();
+                TempData["error"] = $"Session {id} not found!";
+                return RedirectToPage("./Index");
             }
             else
             {
@@ -45,7 +47,7 @@ namespace backoffice.Pages_Sessions
             }
 
             await _sessionService.DeleteSession(id);
-
+            TempData["success"] = "Session deleted successfully!";
             return RedirectToPage("./Index");
         }
     }

@@ -250,3 +250,7 @@ D:\github\cinema\backoffice\obj\Debug\net8.0\refint\backoffice.dll
 D:\github\cinema\backoffice\obj\Debug\net8.0\backoffice.pdb
 D:\github\cinema\backoffice\obj\Debug\net8.0\backoffice.genruntimeconfig.cache
 D:\github\cinema\backoffice\obj\Debug\net8.0\ref\backoffice.dll
+D:\github\cinema\backoffice\obj\Debug\net8.0\backoffice.sourcelink.json
+D:\github\cinema\backoffice\bin\Debug\net8.0\X.PagedList.dll
+D:\github\cinema\backoffice\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+D:\github\cinema\backoffice\obj\Debug\net8.0\backoffice.MvcApplicationPartsAssemblyInfo.cs

@@ -6,5 +6,69 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome, @Model.User?.Name!</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <!-- Monthly Earnings -->
+        <div class="card">
+            <div class="card-body">
+                <div class="row alig n-items-start">
+                    <div class="col-8">
+                        <h5 class="card-title mb-9 fw-semibold"> User </h5>
+                        <h4 class="fw-semibold mb-3">@Model.countUsers</h4>
+                    </div>
+                    <div class="col-4">
+                        <div class="d-flex justify-content-end">
+                            <div
+                                class="text-white bg-secondary rounded-circle p-6 d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-person"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <!-- Monthly Earnings -->
+        <div class="card">
+            <div class="card-body">
+                <div class="row alig n-items-start">
+                    <div class="col-8">
+                        <h5 class="card-title mb-9 fw-semibold"> Movie </h5>
+                        <h4 class="fw-semibold mb-3">@Model.countMovies</h4>
+                    </div>
+                    <div class="col-4">
+                        <div class="d-flex justify-content-end">
+                            <div
+                                class="text-white bg-warning rounded-circle p-6 d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-person"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <!-- Monthly Earnings -->
+        <div class="card">
+            <div class="card-body">
+                <div class="row alig n-items-start">
+                    <div class="col-8">
+                        <h5 class="card-title mb-9 fw-semibold"> Session </h5>
+                        <h4 class="fw-semibold mb-3">@Model.countSessions</h4>
+                    </div>
+                    <div class="col-4">
+                        <div class="d-flex justify-content-end">
+                            <div
+                                class="text-white bg-success rounded-circle p-6 d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-person"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

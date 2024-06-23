@@ -1,6 +1,7 @@
 using backoffice.Models;
 using backoffice.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using X.PagedList;
 
 namespace backoffice.Pages_Users
 {
@@ -13,11 +14,13 @@ namespace backoffice.Pages_Users
             _userService = userService;
         }
 
-        public IList<User> User { get; set; } = default!;
+        public IPagedList<User> Users { get; set; }
+        public string Keyword { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int pageNumber = 1, int pageSize = 10, string keyword="")
         {
-            User = await _userService.FindAllAsync();
+            Keyword = keyword;
+            Users = await _userService.GetUsersPaginate(pageNumber,pageSize,keyword);
         }
     }
 }

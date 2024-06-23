@@ -1,33 +1,53 @@
 @page
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using X.PagedList.Mvc.Core
 @model backoffice.Pages_Sessions.IndexModel
 
 @{
     ViewData["Title"] = "Session page ";
 }
-
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["success"]
+    </div>
+}
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["error"]
+    </div>
+}
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Upload" class="btn btn-outline-primary">Upload CSV</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Session[0].Movie)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Session[0].SessionDateTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Session[0].Room)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sessions[0].Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sessions[0].Movie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sessions[0].SessionDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sessions[0].Room)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Session) {
+    @foreach (var item in Model.Sessions)
+    {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Movie.Id)
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie!.Title)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SessionDateTime)
@@ -41,6 +61,14 @@
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
+
+<nav aria-label="Page navigation">
+    @Html.PagedListPager(
+        Model.Sessions,
+        page => Url.Page("Index", new { pageNumber = page }),
+        PagedListRenderOptions.Classic
+    )
+</nav>

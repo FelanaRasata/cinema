@@ -1,15 +1,15 @@
 @page
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using X.PagedList.Mvc.Core
 @model backoffice.Pages_Movies.DetailsModel
 
 @{
     ViewData["Title"] = "Details Movie";
 }
 
-
-
 <div>
     <h4>Movie</h4>
-    <hr />
+    <hr/>
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Movie.Title)
@@ -24,7 +24,7 @@
             @Html.DisplayFor(model => model.Movie.Description)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.Duration)
+            @Html.DisplayNameFor(model => model.Movie.Duration) (mn)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Movie.Duration)
@@ -36,8 +36,43 @@
             @Html.DisplayFor(model => model.Movie.Category)
         </dd>
     </dl>
+    <hr/>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sessions[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sessions[0].SessionDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sessions[0].Room)
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Sessions)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SessionDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Room)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Movie.Id">Edit</a> |
+    <a asp-page="./Edit" class="btn btn-primary" asp-route-id="@Model.Movie.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

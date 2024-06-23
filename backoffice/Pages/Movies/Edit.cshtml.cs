@@ -25,16 +25,18 @@ namespace backoffice.Pages_Movies
         {
             if (id == null)
             {
-                return NotFound();
+                TempData["error"] = "id not found!";
+                return RedirectToPage("./Index");
             }
 
             var movie = await _movieService.FindByIdAsync(id);
             if (movie == null)
             {
-                return NotFound();
+                TempData["error"] = $"Movie {id} not found!";
+                return RedirectToPage("./Index");
             }
 
-            ViewData["Categories"] = new SelectList(_toolService.GetCategories());
+            
             Movie = movie;
             return Page();
         }
@@ -63,7 +65,7 @@ namespace backoffice.Pages_Movies
                     throw;
                 }
             }
-
+            TempData["success"] = "Movie updated successfully!";
             return RedirectToPage("./Index");
         }
     }

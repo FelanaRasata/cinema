@@ -37,7 +37,7 @@ namespace backoffice.Pages_Sessions
             }
 
             await _sessionService.SaveSession(Session);
-
+            TempData["success"] = "Session added successfully!";
             return RedirectToPage("./Index");
         }
     }

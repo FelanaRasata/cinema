@@ -1,6 +1,7 @@
 using backoffice.Models;
 using backoffice.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using X.PagedList;
 
 namespace backoffice.Pages_Movies
 {
@@ -13,11 +14,15 @@ namespace backoffice.Pages_Movies
             _movieService = movieService;
         }
 
-        public IList<Movie> Movie { get; set; } = default!;
+        public IPagedList<Movie> Movies { get; set; }
+        public string Keyword { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int pageNumber = 1, int pageSize = 10, string keyword ="")
         {
-            Movie = await _movieService.FindAllAsync();
+            Keyword = keyword;
+            Movies = await _movieService.GetMoviesPaginate(pageNumber, pageSize, keyword);
         }
+
+        
     }
 }

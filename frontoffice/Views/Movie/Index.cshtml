@@ -1,0 +1,49 @@
+@model X.PagedList.IPagedList<backoffice.Models.Movie>
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<form method="get" class="input-group mb-3">
+    <input type="text" class="form-control" name="keyword" value="@ViewBag.Keyword" placeholder="Search by title">
+    <input class="btn btn-outline-primary" type="submit" value="Search">
+</form>
+
+<p>
+    <a asp-controller="Movie" asp-action="ExportToPdf" class="btn btn-outline-primary">Export To PDF</a>
+</p>
+<h5 class="card-title fw-semibold mb-4">Movies</h5>
+<div class="row">
+
+    @foreach (var movie in Model)
+    {
+        <div class="col-md-4">
+            <h5 class="card-title fw-semibold mb-4"></h5>
+            <div class="card">
+                <div class="card-header">
+                    @movie.Category
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">#@movie.Id @movie.Title</h5>
+                    <p class="card-text">Duration(mn) : @movie.Duration</p>
+                    <a asp-controller="Movie" class="btn btn-primary" asp-action="Details" asp-route-id="@movie.Id">Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+<div>
+    @Html.PagedListPager(
+        Model,
+        page => Url.Action("Index", new { pageNumber = page, pageSize = Model.PageSize, keyword = ViewBag.Keyword }),
+        new PagedListRenderOptions
+        {
+            UlElementClasses = new[] { "pagination" },
+            LiElementClasses = new[] { "page-item" },
+            PageClasses = new[] { "page-link" }
+        }
+    )
+</div>

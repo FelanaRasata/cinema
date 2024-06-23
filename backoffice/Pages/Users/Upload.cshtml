@@ -1,0 +1,19 @@
+﻿@page
+@model backoffice.Pages_Users.UploadModel
+
+@{
+    ViewData["Title"] = "Upload CSV User";
+}
+
+<h2>User</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3 form-check">
+        <label for="csvFile" class="form-label">Choose CSV File:</label>
+        <input type="file" class="form-control" id="csvFile" name="csvFile">
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+
+</form>

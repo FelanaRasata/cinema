@@ -1,42 +1,61 @@
 @page
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using X.PagedList.Mvc.Core
 @model backoffice.Pages_Movies.IndexModel
 
 @{
     ViewData["Title"] = "Movie page";
 }
 
-<!DOCTYPE html>
 
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["success"]
+    </div>
+}
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["error"]
+    </div>
+}
+<form method="get" class="input-group mb-3">
+    <input type="text" class="form-control"  name="keyword" value="@Model.Keyword">
+    <input class="btn btn-outline-primary"  type="submit">
+</form>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Upload" class="btn btn-outline-primary">Upload CSV</a>
 </p>
+
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Duration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Category)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Movies[0].Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movies[0].Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movies[0].Duration) (mn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movies[0].Category)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Movie) {
+    @foreach (var item in Model.Movies)
+    {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Duration)
@@ -50,6 +69,14 @@
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
+
+<nav aria-label="Page navigation">
+    @Html.PagedListPager(
+        Model.Movies,
+        page => Url.Page("Index", new { pageNumber = page }),
+        PagedListRenderOptions.Classic
+    )
+</nav>

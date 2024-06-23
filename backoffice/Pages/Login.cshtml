@@ -6,40 +6,65 @@
 }
 
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
 <head>
-    <title>Login</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/backoffice.styles.css" asp-append-version="true"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modernize</title>
+    <link rel="shortcut icon" type="image/png" href="~/assets/images/logos/favicon.png"/>
+    <link rel="stylesheet" href="~/assets/css/styles.min.css"/>
 </head>
+
 <body>
-<div>
-    <div class="container">
-        <main role="main" class="pb-3">
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+    <div
+        class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="d-flex align-items-center justify-content-center w-100">
+            <div class="row justify-content-center w-100">
+                <div class="col-md-8 col-lg-6 col-xxl-3">
+                    <div class="card mb-0">
+                        <div class="card-body">
+                            <a class="text-nowrap logo-img text-center d-block py-3 w-100">
+                                <img src="~/assets/images/logos/dark-logo.svg" width="180" alt="">
+                            </a>
+                            <p class="text-center">Your movies</p>
 
-            <form method="post">
-                <div class="form-group">
-                    <label asp-for="Email" class="control-label"></label>
-                    <input asp-for="Email" class="form-control"/>
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                            @if (TempData["success"] != null)
+                            {
+                                <div class="alert alert-success" role="alert">
+                                    @TempData["success"]
+                                </div>
+                            }
+
+                            <div asp-validation-summary="All" class="text-danger"></div>
+
+                            <form method="post">
+                                <div class="mb-3">
+                                    <label asp-for="Email" class="form-label"></label>
+                                    <input type="email" asp-for="Email" class="form-control" aria-describedby="emailHelp">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="mb-4">
+                                    <label asp-for="Password" class="form-label"></label>
+                                    <input asp-for="Password" type="password" class="form-control">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
+
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Password" class="control-label"></label>
-                    <input asp-for="Password" class="form-control"/>
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </main>
+            </div>
+        </div>
     </div>
 </div>
-
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

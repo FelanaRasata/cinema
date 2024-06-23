@@ -19,7 +19,7 @@ namespace backoffice.Pages_Movies
 
         public IActionResult OnGet()
         {
-            ViewData["Categories"] = new SelectList(_toolService.GetCategories());
+           
             return Page();
         }
 
@@ -35,7 +35,7 @@ namespace backoffice.Pages_Movies
             }
 
             await _movieService.SaveMovie(Movie);
-
+            TempData["success"] = "Movie added successfully!";
             return RedirectToPage("./Index");
         }
     }

@@ -1,7 +1,13 @@
+using frontoffice.Database;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton(new MovieService(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddSingleton(new SessionService(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddSingleton(new PdfService());
 
 var app = builder.Build();
 
@@ -22,6 +28,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Movie}/{action=Index}/{id?}");
 
 app.Run();
